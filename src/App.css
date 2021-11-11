@@ -25,6 +25,7 @@
     border: 1px solid #999999;
     display: table-cell;
     padding: 9px 30px;
+    vertical-align: middle;
 }
 
 .divTableFoot{

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "./components/image"
+import Item from "./components/item"
 import "./App.css";
 const App = () => {
   const [pokemon, setPokemon] = useState("pikachu");
@@ -23,6 +25,7 @@ const App = () => {
 
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
+    //this.setState();
   }
   
   const handleSubmit = (e) => {
@@ -42,7 +45,7 @@ const App = () => {
         {pokemonData.map((data) => {
           return(
             <div className="container">
-              <img src={data.sprites["front_default"]}/>
+              <Image front={data.sprites["front_default"]} back={data.sprites["back_default"]}/>
               <div className="divTable"> 
                 <div className="divTableBody"> 
                   <div className="divTableRow"> 
@@ -61,6 +64,13 @@ const App = () => {
                     <div className="divTableCell">
                         {" "}
                         {data.weight /10} kg
+                    </div>
+                  </div>
+                  <div className="divTableRow"> 
+                    <div className="divTableCell">Held Items</div>
+                    <div className="divTableCell">
+                        {" "}
+                        {data.held_items[0] ? data.held_items[0].item.name : 'Nenhum' }
                     </div>
                   </div>
                 </div>
